@@ -11,20 +11,26 @@ module.exports = {
 		loaders: [{
 			test: /\.js$/,
 			exclude: /node_modules/,
-			loaders: ["babel-loader?presets=latest"]
+			loader: "babel-loader",
+			query: {
+				presets: ["latest"],
+				plugins: ["transform-object-rest-spread"]
+			}
 		}, {
 			test: /\.html$/,
 			loader: "html"
 		}, {
 			test: /\.css$/,
-			loader: ExtractTextPlugin.extract( "css-loader")
+			loader: ExtractTextPlugin.extract("css-loader")
 		}, {
 			test: /.(png|woff|woff2|eot|ttf|svg)(\?.*)?$/,
 			loader: "url-loader?limit=100000"
 		}]
 	},
-	plugins:[
+	plugins: [
 		new ExtractTextPlugin("bundle.css"),
-		new HtmlWebpackPlugin({template: "./source/index.html"})
+		new HtmlWebpackPlugin({
+			template: "./source/index.html"
+		})
 	]
 }
