@@ -4,11 +4,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	entry: [
-		"./source/index.js",
+		"./source/index.jsx",
 		"./source/index.css"
 	],
 	module: {
-		loaders: [{
+		rules: [{
 			test: /\.js$/,
 			exclude: /node_modules/,
 			loader: "babel-loader",
@@ -18,17 +18,27 @@ module.exports = {
 			}
 		}, {
 			test: /\.html$/,
-			loader: "html"
+			loader: "html-loader"
 		}, {
 			test: /\.css$/,
-			loader: ExtractTextPlugin.extract("css-loader")
+			loader: ExtractTextPlugin.extract({
+				fallbackLoader: "style-loader",
+				loader: "css-loader",
+				publicPath: "/dist"
+			})
+
+
 		}, {
 			test: /.(png|woff|woff2|eot|ttf|svg)(\?.*)?$/,
 			loader: "url-loader?limit=100000"
 		}]
 	},
 	plugins: [
-		new ExtractTextPlugin("bundle.css"),
+		new ExtractTextPlugin({
+			filename: "bundle.css",
+			disable: false,
+			allChunks: true
+		}),
 		new HtmlWebpackPlugin({
 			template: "./source/index.html"
 		})
