@@ -4,34 +4,43 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	entry: [
-		"./source/index.jsx",
+		"./source/index.js",
 		"./source/index.css"
 	],
 	module: {
 		rules: [{
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loader: "babel-loader",
-			query: {
-				presets: ["latest"],
-				plugins: ["transform-object-rest-spread"]
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["latest"],
+						plugins: ["transform-object-rest-spread"]
+					}
+				}
+			},
+			{
+				test: /\.html$/,
+				use: "html-loader"
+			},
+			{
+				test: /\.css$/,
+				use: ExtractTextPlugin.extract({
+					fallbackLoader: "style-loader",
+					loader: "css-loader",
+					publicPath: "/dist"
+				})
+			},
+			{
+				test: /.(png|woff|woff2|eot|ttf|svg)(\?.*)?$/,
+				use: {
+					loader: "url-loader",
+					options: {
+						limit: 100000
+					}
+				}
 			}
-		}, {
-			test: /\.html$/,
-			loader: "html-loader"
-		}, {
-			test: /\.css$/,
-			loader: ExtractTextPlugin.extract({
-				fallbackLoader: "style-loader",
-				loader: "css-loader",
-				publicPath: "/dist"
-			})
-
-
-		}, {
-			test: /.(png|woff|woff2|eot|ttf|svg)(\?.*)?$/,
-			loader: "url-loader?limit=100000"
-		}]
+		]
 	},
 	plugins: [
 		new ExtractTextPlugin({

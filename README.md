@@ -1,4 +1,4 @@
-# Template for creating a CommonJS library
+# Framework neutral template for building apps with Webpack and Babel
 
 ## Features
 
@@ -33,3 +33,52 @@
 - Loaders and plugins that are common to all build configuration should be added to `webpack.common.config.js`
 - `webpack.serve.config.js` and `webpack.build.config.js` contain additional configuration that is specific for the different builds.
 
+### Adding support for React
+
+Run on the commandline:
+
+```bash
+npm install -D babel-preset-react
+npm install -S react react-dom
+```
+
+Add the following object to rules in webpack.common.config:
+
+```javascript
+{
+  test: /\.jsx$/,
+  exclude: /node_modules/,
+  loader: "babel-loader",
+  query: {
+    presets: ["latest", "react"],
+    plugins: ["transform-object-rest-spread"]
+  }
+},
+```
+
+### Adding support for Angular 1.x
+
+Run on the commandline:
+
+```bash
+npm install -D ng-annotate-loader
+npm install -S angular
+```
+
+Exchange the first object in rules in webpack.common.config with:
+
+```javascript
+{
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: [{
+    loader: "ng-annotate-loader"
+  },{
+    loader: "babel-loader",
+    options: {
+      presets: ["latest"],
+      plugins: ["transform-object-rest-spread"]
+    }
+  }
+}
+```
