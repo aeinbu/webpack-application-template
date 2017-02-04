@@ -7,6 +7,9 @@ module.exports = {
 		"./source/index.js",
 		"./source/index.css"
 	],
+	resolve: {
+		extensions: ['.js']
+	},
 	module: {
 		rules: [{
 				test: /\.js$/,
