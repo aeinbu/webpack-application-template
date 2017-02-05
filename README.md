@@ -17,14 +17,15 @@
 
 1. Copy the files and structure of this project.
    (If you use `git clone` you would probably want to remove the `.git` directory before initializing your new repo.)
-2. Create your app in the `source` folder.
-3. Modify `package.json` to reflect the correct names.
-4. Run `npm start` to start the dev-server. Navigate to (localhost:8080)[http://localhost:8080]
-5. Build by running `npm run build` or `npm run build-release`
+2. Modify `package.json` to reflect the correct names.
+3. Run `npm update` to load dependencies.
+4. Create your app in the `source` folder.
+5. Run `npm start` to start the dev-server. Navigate to (localhost:8080)[http://localhost:8080]
+6. Build by running `npm run build` or `npm run build-release`
 
 ### ...or
 
-1. Create two folders: `source`.
+1. Create a folder: `source`.
 2. Copy five files: `webpack.*.config.js` (=3 files), and `.gitignore` and `package.json`.
 3. Modify `package.json`.
 
@@ -49,11 +50,12 @@ Add the following object to rules in webpack.common.config:
 }
 ```
 
-Optionally, add `.ts` extention to the `resolve` element so that typescript files are resolved without the `.ts` extension:
+- Optionally, change the entry point (in webpack.common.config) to "index.ts"
+- Optionally, add `.ts` extention to the `resolve` element so that typescript files can be required without the `.ts` extension:
 
 ```javascript
 resolve: {
-  extensions: ['.ts', '.js']
+  extensions: ['.js', '.ts']
 }
 ```
 
@@ -80,7 +82,14 @@ Add the following object to rules in webpack.common.config:
 },
 ```
 
-Also, optionally change the entry point (in webpack.common.config) to "index.jsx"
+- Optionally, change the entry point (in webpack.common.config) to "index.jsx"
+- Optionally, add `.jsx` extention to the `resolve` element so that jsx files can be required without the `.jsx` extension:
+
+```javascript
+resolve: {
+  extensions: ['.js', '.jsx']
+}
+```
 
 ### Adding support for Angular 1.x
 
