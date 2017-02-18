@@ -3,6 +3,7 @@
 ## Features
 
 - Builds clientside web applications with webpack and babel.
+- Treeshaking with webpack
 - A webserver with hot reload when developing your app.
 - Also builds seperate css, fonts and other files.
   (Either from seperate entry points for css, or from `require` statements in JavaScript code.)
