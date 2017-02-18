@@ -2,6 +2,8 @@ const nodeExternals = require("webpack-node-externals");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const babelPresetLatest = ["latest", {"es2015": {"modules": false}}];
+
 module.exports = {
 	entry: [
 		"./source/index.js",
@@ -17,7 +19,7 @@ module.exports = {
 				use: {
 					loader: "babel-loader",
 					options: {
-						presets: ["latest"],
+						presets: [ babelPresetLatest ],
 						plugins: ["transform-object-rest-spread"]
 					}
 				}

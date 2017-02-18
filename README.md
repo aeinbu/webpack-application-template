@@ -76,7 +76,7 @@ Add the following object to rules in webpack.common.config:
   exclude: /node_modules/,
   loader: "babel-loader",
   query: {
-    presets: ["latest", "react"],
+    presets: [babelPresetLatest, "react"],
     plugins: ["transform-object-rest-spread"]
   }
 },
@@ -113,7 +113,7 @@ Exchange the first object in rules in webpack.common.config with:
   },{
     loader: "babel-loader",
     options: {
-      presets: ["latest"],
+      presets: [babelPresetLatest],
       plugins: ["transform-object-rest-spread"]
     }
   }
