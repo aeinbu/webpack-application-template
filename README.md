@@ -3,7 +3,9 @@
 ## Features
 
 - Builds clientside web applications with webpack and babel.
-- Treeshaking with webpack
+- Includes a cachebreaker hash to the output files.
+- Treeshaking with webpack.
+- Splits libraries from application code to improve build times. (Can be removed.)
 - A webserver with hot reload when developing your app.
 - Also builds seperate css, fonts and other files.
   (Either from seperate entry points for css, or from `require` statements in JavaScript code.)

@@ -7,7 +7,7 @@ const combinedConfig = merge({}, commonConfig, {
 	output: {
 		path: path.resolve(__dirname, "./dist"),
 		libraryTarget: "var",
-		filename: "bundle.js"
+		filename: "[name].[chunkhash].js"
 	},
 	devtool: "#source-map",
 });
