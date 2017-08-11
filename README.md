@@ -79,7 +79,7 @@ Add the following object to `rules` in webpack.common.config:
   exclude: /node_modules/,
   loader: "babel-loader",
   query: {
-    presets: [babelPresetLatest, "react"],
+    presets: [["env", {"modules": false}], "react"],
     plugins: ["transform-object-rest-spread"]
   }
 },
@@ -105,20 +105,12 @@ npm install -D ng-annotate-loader
 npm install -S angular
 ```
 
-Exchange the first object in `rules` in webpack.common.config with:
+Modify the first entry in `rules` in webpack.common.config to:
 
 ```javascript
 {
   test: /\.js$/,
   exclude: /node_modules/,
-  use: [{
-    loader: "ng-annotate-loader"
-  },{
-    loader: "babel-loader",
-    options: {
-      presets: [babelPresetLatest],
-      plugins: ["transform-object-rest-spread"]
-    }
-  }
+  use: ["babel-loader", "ng-annotate-loader"]
 }
 ```
