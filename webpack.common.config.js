@@ -1,12 +1,12 @@
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	entry: {
-		app:[
-			"./source/index.js",
-			"./source/index.css"
+		app: [
+			"./src/index.js",
+			"./src/index.css"
 		]
 	},
 	resolve: {
@@ -24,11 +24,16 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ExtractTextPlugin.extract({
-					fallback: "style-loader",
-					use: "css-loader",
-					publicPath: "/dist"
-				})
+				use: [{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							// you can specify a publicPath here
+							// by default it use publicPath in webpackOptions.output
+							publicPath: '../'
+						}
+					},
+					"css-loader"
+				],
 			},
 			{
 				test: /.(png|woff|woff2|eot|ttf|svg)(\?.*)?$/,
@@ -41,20 +46,20 @@ module.exports = {
 			}
 		]
 	},
+	optimization: {
+		splitChunks: {
+			chunks: 'all'
+		}
+	},
 	plugins: [
-		new ExtractTextPlugin({
-			filename: "[name].[chunkhash].css",
-			disable: false,
-			allChunks: true
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: "libs",
-			minChunks(module) {
-				return module.context && module.context.indexOf('node_modules') !== -1;
-			}
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: "[name].[hash].css",
+			chunkFilename: "[id].[hash].css"
 		}),
 		new HtmlWebpackPlugin({
-			template: "./source/index.html"
+			template: "./src/index.html"
 		})
 	]
 }

@@ -22,13 +22,13 @@
    (If you use `git clone` you would probably want to remove the `.git` directory before initializing your new repo.)
 2. Modify `package.json` to reflect the correct names.
 3. Run `npm update` to load dependencies.
-4. Create your app in the `source` folder.
+4. Create your app in the `src` folder.
 5. Run `npm start` to start the dev-server. Navigate to (localhost:8080)[http://localhost:8080]
 6. Build by running `npm run build` or `npm run build-release`
 
 ### ...or
 
-1. Create a folder: `source`.
+1. Create a folder: `src`.
 2. Copy five files: `webpack.*.config.js` (=3 files), and `.gitignore` and `package.json`.
 3. Modify `package.json`.
 

@@ -6,9 +6,12 @@ const combinedConfig = merge({}, commonConfig, {
 	output: {
 		path: path.resolve(__dirname, "./dist"),
 		libraryTarget: "var",
-		filename: "[name].[chunkhash].js"
+		filename: "[name].[hash].js",
+		chunkFilename: "[name].[hash].js"
+
 	},
 	devtool: "#source-map",
+	mode: "production"
 });
 
 module.exports = combinedConfig;
