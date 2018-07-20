@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -24,14 +23,8 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [{
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							// you can specify a publicPath here
-							// by default it use publicPath in webpackOptions.output
-							publicPath: '../'
-						}
-					},
+				use: [
+					MiniCssExtractPlugin.loader,
 					"css-loader"
 				],
 			},
@@ -53,8 +46,6 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			// Options similar to the same options in webpackOptions.output
-			// both options are optional
 			filename: "[name].[hash].css",
 			chunkFilename: "[id].[hash].css"
 		}),
