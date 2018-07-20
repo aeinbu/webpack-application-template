@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist/*",
-    "build": "npm run clean && webpack --config webpack.build.config.js",
-    "build-release": "npm run clean && webpack -p --config webpack.build.config.js",
+    "build": "npm run clean && webpack",
     "watch": "webpack --config webpack.build.config.js --watch",
     "start": "webpack-dev-server --config webpack.serve.config.js"
   },
