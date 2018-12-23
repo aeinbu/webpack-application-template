@@ -29,12 +29,14 @@
 
 ### ...or
 1. Create a folder: `src`.
-2. Copy five files: `webpack.*.config.js` (=3 files), and `.gitignore` and `package.json`.
-3. Modify `package.json`, and run `npm update` to pull inn all dependencies.
+2. Copy five files: `webpack.*.config.js` (=5 files), and `.gitignore` and `package.json`.
+3. Modify `package.json`, and run `npm install` to pull inn all dependencies.
 
 ## Adding loaders or plugins
+- Compilation plugins should primarily be added to `babelrc` file.
 - Loaders and plugins that are common to all build configuration should be added to `webpack.common.config.js`
-- `webpack.serve.config.js` and `webpack.build.config.js` contain additional configuration that is specific for the different builds.
+- `webpack.development.config.js`  and `webpack.production.config.js` contain additional configuration that is specific for the different builds.
+- `webpack.serve.config` extends the development configuration, adding configuration relevant to `webpack-dev-server`.
 
 ### Adding support for Typescript
 Run on the commandline:
@@ -46,8 +48,8 @@ Add the following object to `rules` in webpack.common.config:
 
 ```javascript
 {
-  test: /\.ts$/,
-  use: "awesome-typescript-loader"
+    test: /\.ts$/,
+    use: "awesome-typescript-loader"
 }
 ```
 
@@ -56,7 +58,7 @@ Add the following object to `rules` in webpack.common.config:
 
 ```javascript
 resolve: {
-  extensions: ['.js', '.ts']
+    extensions: ['.js', '.ts']
 }
 ```
 
@@ -72,8 +74,14 @@ Add `"react"` to the presets array in the `.babelrc` file. If you haven't modifi
 
 ```javascript
 {
-  "presets": [["env", {"modules": false}], "react"],
-  "plugins": ["transform-object-rest-spread", "angularjs-annotate"]
+    "presets": [
+        ["env", {"modules": false}],
+        "react"
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-object-rest-spread"],
+        "angularjs-annotate"
+    ]
 }
 ```
 
@@ -82,7 +90,7 @@ Add `"react"` to the presets array in the `.babelrc` file. If you haven't modifi
 
 ```javascript
 resolve: {
-  extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx']
 }
 ```
 
@@ -100,7 +108,12 @@ Add `"angularjs-annotate"` to the plugins array in the `.babelrc` file. If you h
 
 ```javascript
 {
-  "presets": [["env", {"modules": false}]],
-  "plugins": ["transform-object-rest-spread", "angularjs-annotate"]
+    "presets": [
+        ["env", {"modules": false}]
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-object-rest-spread"],
+        ["angularjs-annotate"]
+    ]
 }
 ```

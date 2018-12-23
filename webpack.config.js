@@ -1,17 +1,3 @@
-const path = require("path");
-const commonConfig = require("./webpack.common.config");
-const merge = (...objs) => require("deepmerge").all(objs, {arrayMerge: (arr1, arr2) => arr1.concat(arr2) });
+// This file exists so that it is possible to run `npx webpack` from the command line.
 
-const combinedConfig = merge({}, commonConfig, {
-	output: {
-		path: path.resolve(__dirname, "./dist"),
-		libraryTarget: "var",
-		filename: "[name].[hash].js",
-		chunkFilename: "[name].[hash].js"
-
-	},
-	devtool: "#source-map",
-	mode: "production"
-});
-
-module.exports = combinedConfig;
+module.exports = require("./webpack.development.config");

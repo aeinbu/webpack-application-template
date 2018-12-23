@@ -1,22 +1,17 @@
 const webpack = require("webpack");
-const commonConfig = require("./webpack.common.config");
+
+const commonConfig = require("./webpack.development.config");
 const merge = (...objs) => require("deepmerge").all(objs, {arrayMerge: (arr1, arr2) => arr1.concat(arr2) });
 
 
 const combinedConfigs = merge({}, commonConfig, {
-	output: {
-		publicPath: "/",
-		filename: "[name].js"
-	},
-	devtool: "#eval",
 	plugins: [
 		new webpack.HotModuleReplacementPlugin()
 	],
 	devServer: {
-		inline: true,
+		inline: false,
 		contentBase: "wwwroot"
-	},
-	mode: "development"
+	}
 });
 
 module.exports = combinedConfigs;
