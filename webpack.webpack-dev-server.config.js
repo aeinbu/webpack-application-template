@@ -9,8 +9,10 @@ const combinedConfigs = merge({}, commonConfig, {
 		new webpack.HotModuleReplacementPlugin()
 	],
 	devServer: {
-		inline: false,
-		contentBase: "wwwroot"
+		publicPath: "/",
+		inline: true,
+		contentBase: "/",
+		disableHostCheck: true	//TODO: Remove when bug is fixed! https://github.com/webpack/webpack-dev-server/issues/1604
 	}
 });
 
