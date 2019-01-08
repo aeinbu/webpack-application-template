@@ -66,7 +66,7 @@ resolve: {
 Run on the commandline:
 
 ```bash
-npm install -D babel-preset-react
+npm install -D @babel/preset-react
 npm install -S react react-dom
 ```
 
@@ -75,12 +75,11 @@ Add `"react"` to the presets array in the `.babelrc` file. If you haven't modifi
 ```javascript
 {
     "presets": [
-        ["env", {"modules": false}],
-        "react"
+        ["@babel/preset-env", {"modules": false}],
+        ["@babel/preset-react"]
     ],
     "plugins": [
-        ["@babel/plugin-proposal-object-rest-spread"],
-        "angularjs-annotate"
+        ["@babel/plugin-proposal-object-rest-spread"]
     ]
 }
 ```
