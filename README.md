@@ -80,7 +80,6 @@ Add `"react"` to the presets array in the `.babelrc` file. If you haven't modifi
         ["@babel/preset-react"]
     ],
     "plugins": [
-        ["@babel/plugin-proposal-object-rest-spread"]
     ]
 }
 ```
@@ -109,10 +108,9 @@ Add `"angularjs-annotate"` to the plugins array in the `.babelrc` file. If you h
 ```javascript
 {
     "presets": [
-        ["env", {"modules": false}]
+        ["@babel/preset-env", {"modules": false}],
     ],
     "plugins": [
-        ["@babel/plugin-proposal-object-rest-spread"],
         ["angularjs-annotate"]
     ]
 }
