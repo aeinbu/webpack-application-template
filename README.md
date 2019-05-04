@@ -1,4 +1,5 @@
 # Framework neutral template for building apps with Webpack and Babel
+This template is meant to be a good starting point for anyone who wants to start building modern web apps.
 
 ## Features
 - Builds clientside web applications with webpack and babel.
