@@ -1,15 +1,19 @@
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	entry: {
 		app: [
-			"./src/index.js",
-			"./src/index.css"
+			"src/index.js",
+			"src/index.css"
 		]
 	},
 	resolve: {
-		extensions: ['.js']
+		extensions: [".js"],
+		alias: {
+			src: path.resolve(__dirname, "src")
+		}
 	},
 	module: {
 		rules: [{
