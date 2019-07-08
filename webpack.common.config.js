@@ -33,6 +33,20 @@ module.exports = {
 				],
 			},
 			{
+				test: /\.scss$/,
+				use: [
+					{ loader: MiniCssExtractPlugin. loader },
+					"css-loader",
+					{
+						loader: "sass-loader",
+						options: {
+							implementation: require("sass"), //You have to tell the compiler which sass compiler you want to use -- the default is `node-sass`.
+							sourceMap: true
+						}
+					}
+				]
+			},
+			{
 				test: /.(png|woff|woff2|eot|ttf|svg)(\?.*)?$/,
 				use: {
 					loader: "url-loader",
