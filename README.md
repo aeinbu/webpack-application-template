@@ -7,6 +7,7 @@ This template is meant to be a good starting point for anyone who wants to start
 - Treeshaking with webpack.
 - Splits libraries from application code to improve build times.
 - Automatic splitting of webpacked files to improve load times at runtime.
+- Supports css and scss.
 - Also builds seperate css, fonts and other files.
   (Either from seperate entry points for css, or from `require` statements in JavaScript code.)
 - A webserver with hot reload when developing your app.

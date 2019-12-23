@@ -6,7 +6,7 @@ module.exports = {
 	entry: {
 		app: [
 			"src/index.js",
-			"src/index.css"
+			"src/index.scss"
 		]
 	},
 	resolve: {
