@@ -1,6 +1,6 @@
-require("@babel/polyfill");
 require("src/styles/scss/master.scss");
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
-import _ from "lodash";
+"...and this JS message should be seen in the browser console!" |> console?.log;
 
-console.log("...and this JS message should be seen in the browser console!");
