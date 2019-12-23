@@ -1,4 +1,3 @@
-require("src/styles/scss/master.scss");
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
